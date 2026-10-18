@@ -1,0 +1,10 @@
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="tests" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="tests\core_tests.cpp">
+      <Filter>tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

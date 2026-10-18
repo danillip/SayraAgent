@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <!-- Imported after vcpkg.targets: use its actual resolved installation path. -->
+  <PropertyGroup Condition="'$(_ZVcpkgCurrentInstalledDir)' != ''">
+    <ExternalIncludePath>$(ExternalIncludePath);$(_ZVcpkgCurrentInstalledDir)include</ExternalIncludePath>
+    <CAExcludePath>$(CAExcludePath);$(_ZVcpkgCurrentInstalledDir)include</CAExcludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <ExternalWarningLevel>TurnOffAllWarnings</ExternalWarningLevel>
+      <AdditionalOptions>/analyze:external- %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+  </ItemDefinitionGroup>
+</Project>

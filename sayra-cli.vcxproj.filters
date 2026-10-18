@@ -1,0 +1,11 @@
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="apps" />
+    <Filter Include="apps\sayra-cli" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="apps\sayra-cli\main.cpp">
+      <Filter>apps\sayra-cli</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

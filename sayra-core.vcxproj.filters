@@ -1,0 +1,131 @@
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="config" />
+    <Filter Include="docs" />
+    <Filter Include="include" />
+    <Filter Include="include\sayra" />
+    <Filter Include="include\sayra\core" />
+    <Filter Include="include\sayra\embeddings" />
+    <Filter Include="include\sayra\events" />
+    <Filter Include="include\sayra\integration" />
+    <Filter Include="include\sayra\memory" />
+    <Filter Include="include\sayra\models" />
+    <Filter Include="include\sayra\projects" />
+    <Filter Include="include\sayra\routing" />
+    <Filter Include="include\sayra\tools" />
+    <Filter Include="src" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\types.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\config.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\events.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\transport.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\providers.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\embeddings.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\routing.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\projects.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\memory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tools.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\orchestrator.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\realtime.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClInclude Include="include\sayra\core\config.hpp">
+      <Filter>include\sayra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\core\orchestrator.hpp">
+      <Filter>include\sayra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\core\types.hpp">
+      <Filter>include\sayra\core</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\embeddings\embeddings.hpp">
+      <Filter>include\sayra\embeddings</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\events\events.hpp">
+      <Filter>include\sayra\events</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\integration\knowledge.hpp">
+      <Filter>include\sayra\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\integration\realtime.hpp">
+      <Filter>include\sayra\integration</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\memory\memory.hpp">
+      <Filter>include\sayra\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\models\providers.hpp">
+      <Filter>include\sayra\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\models\transport.hpp">
+      <Filter>include\sayra\models</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\projects\projects.hpp">
+      <Filter>include\sayra\projects</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\routing\routing.hpp">
+      <Filter>include\sayra\routing</Filter>
+    </ClInclude>
+    <ClInclude Include="include\sayra\tools\tools.hpp">
+      <Filter>include\sayra\tools</Filter>
+    </ClInclude>
+    <None Include="README.md" />
+    <None Include=".gitignore" />
+    <None Include="CMakeLists.txt" />
+    <None Include="CMakePresets.json" />
+    <None Include="vcpkg.json" />
+    <None Include="config\sayra.example.json">
+      <Filter>config</Filter>
+    </None>
+    <None Include="docs\API_PROVIDERS.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\ARCHITECTURE.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\IMPLEMENTATION_STATUS.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\INTEGRATION_CONTRACTS.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\MODEL_ROUTING.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\SETUP_WINDOWS.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\TEAM_INTEGRATION.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\TEST_PLAN.md">
+      <Filter>docs</Filter>
+    </None>
+    <None Include="docs\PUBLISHING.md" />
+    <None Include="build-support\Sayra.Common.props" />
+    <None Include=".clang-format" />
+    <None Include="build-support\Sayra.ExternalHeaders.targets" />
+  </ItemGroup>
+</Project>

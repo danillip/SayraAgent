@@ -1,0 +1,9 @@
+<Solution>
+  <Configurations>
+    <Platform Name="x64" />
+  </Configurations>
+  <Project Path="sayra-cli.vcxproj" Id="750e22ba-3b5e-42e6-8361-392f62b5f318" />
+  <Project Path="sayra-core.vcxproj" Id="e4943297-ac09-4d10-9153-7b9d9f257b8b" />
+  <Project Path="sayra-core-tests.vcxproj" Id="7776b988-d54a-41a2-89a7-c3439bba67c3" />
+  <Project Path="Sayra.vcxproj" Id="7a6d5b43-59d5-4aed-9b0d-b68e0832ca93" />
+</Solution>

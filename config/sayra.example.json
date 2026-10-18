@@ -1,0 +1,12 @@
+{
+  "data_dir": "data", "ollama_url": "http://127.0.0.1:11434", "mode": "local", "debug": false,
+  "cloud": {"enabled": false, "base_url": "https://api.openai.com/v1", "key_env": "SAYRA_CLOUD_API_KEY",
+    "allow_project_data": false, "allow_transcripts": false, "max_cost_per_1k_tokens": 0},
+  "models": [], "classifier_model": "", "embedding_model": "bge-m3:latest",
+  "projects": [], "active_project": "",
+  "generation": {"stream":true, "max_tokens":1024, "context":8192, "temperature":0.5, "keep_alive":"5m"},
+  "http": {"connect_timeout":5, "request_timeout":180, "retries":1},
+  "limits": {"history_bytes":16000,"history_messages":100,"conversations":100,"file_bytes":64000,"context_bytes":24000,
+    "max_files":500,"agent_iterations":4,"tool_calls":8},
+  "realtime": {"context_bytes":8000,"interval_seconds":5}
+}
