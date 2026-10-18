@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <!-- Imported after vcpkg.targets: use its actual resolved installation path. -->
+  <!-- После vcpkg.targets доступен путь к выбранному каталогу зависимостей. -->
   <PropertyGroup Condition="'$(_ZVcpkgCurrentInstalledDir)' != ''">
     <ExternalIncludePath>$(ExternalIncludePath);$(_ZVcpkgCurrentInstalledDir)include</ExternalIncludePath>
     <CAExcludePath>$(CAExcludePath);$(_ZVcpkgCurrentInstalledDir)include</CAExcludePath>

@@ -12,7 +12,7 @@ struct IntentDecision {
 class IntentClassifier {
   public:
     IntentDecision classify(const AgentRequest &, const std::vector<ChatMessage> &history) const;
-    // Optional compact-model disambiguation. Caller supplies an already authorized provider/model.
+    // Уточнение неоднозначного намерения через выбранную и разрешённую модель.
     IntentDecision refine(IntentDecision, const AgentRequest &, IModelProvider &, const ModelInfo &,
                           std::stop_token) const;
 };

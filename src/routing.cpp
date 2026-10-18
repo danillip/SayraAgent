@@ -54,7 +54,7 @@ IntentDecision IntentClassifier::classify(const AgentRequest &req,
     }
     if (any(text, {"привет", "здравств", "hello", "как дела"}) && text.size() < 100)
         add(TaskType::CasualConversation);
-    // Follow-up utterances can inherit a coding context, but never inherit web/privacy permission.
+    // Короткое уточнение наследует тему диалога, но не разрешения на сеть и передачу данных.
     if (intents.empty() && text.size() < 100 && any(text, {"это", "его", "ещё", "дальше", "it", "that"})) {
         for (auto it = history.rbegin(); it != history.rend(); ++it)
             if (it->role == "user") {

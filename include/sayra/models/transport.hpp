@@ -23,7 +23,7 @@ class CurlTransport final : public IHttpTransport {
   public:
     HttpResult perform(const HttpRequest &, ChunkCallback, std::stop_token) override;
 };
-// One parser per request; feed accepts arbitrary network boundaries.
+// Отдельный парсер на запрос; границы фрагментов не обязаны совпадать с границами кадров.
 class StreamParser {
     bool sse_;
     std::string pending_, data_;

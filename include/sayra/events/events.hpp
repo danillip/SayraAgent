@@ -38,7 +38,7 @@ class IEventSink {
     virtual void on_event(const CoreEvent &) = 0;
 };
 class IOverlayEventSink : public IEventSink {};
-// Subscriber ownership remains with the caller. Callbacks execute on the publishing thread.
+// Подписчиками владеет приложение. Обработчики вызываются в потоке публикации.
 class EventBus {
     mutable std::mutex mutex_;
     size_t next_ = 0;

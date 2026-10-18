@@ -1,6 +1,6 @@
 # Настройка Windows
 
-Откройте Visual Studio Installer, проверьте C++ Desktop workload, MSVC v145, Windows SDK и CMake. Все команды ниже пользователь выполняет самостоятельно; агент их не выполнял.
+Откройте Visual Studio Installer, проверьте C++ Desktop workload, MSVC v145, Windows SDK и CMake.
 
 В Developer PowerShell for VS 2026 из корня Sayra:
 

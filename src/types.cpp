@@ -71,7 +71,7 @@ std::string lower_utf8(std::string text) {
     text.resize(bytes);
     WideCharToMultiByte(CP_UTF8, 0, lower.data(), n, text.data(), bytes, nullptr, nullptr);
 #else
-    // Portable ASCII/Russian fold for deterministic classification.
+    // Приведение ASCII и кириллицы к нижнему регистру без Windows API.
     for (size_t i = 0; i < text.size(); ++i) {
         auto c = static_cast<unsigned char>(text[i]);
         if (c >= 'A' && c <= 'Z')

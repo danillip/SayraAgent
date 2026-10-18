@@ -2,7 +2,7 @@
 
 `contract_version == 1`, заголовки include/sayra. Модули собираются одним MSVC toolset/C++ runtime; бинарная ABI-совместимость между разными компиляторами не обещается. Добавлять необязательные поля можно совместимо на уровне исходников, переименование полей и изменение сигнатур требует новой версии контрактов и согласования команды. Ошибки передаются исключениями: ProviderError содержит HTTP status/retryable/cancelled, остальные std::exception — ошибки валидации/хранилища. Ключи и полный удалённый error body в исключения не включаются.
 
-## Developer 2 — знания, исследования, embeddings
+## Модуль Knowledge — знания, исследования, embeddings
 
 Реализует IKnowledgeRetriever и IResearchService в своём модуле. Объекты создаёт composition root приложения, передаёт ядру shared_ptr через set_knowledge/set_research; ядро сохраняет совместное владение. Не вызывайте setters во время run.
 
@@ -13,7 +13,7 @@
 
 Вызовы блокирующие и выполняются на рабочем потоке. Проверяйте stop_token до и во время I/O, ограничения результата и разрешения. При отмене бросайте ProviderError с cancelled=true. UI не разбирает HTTP ни одного провайдера. SourceAdded и AgentResponse содержат готовые ссылки.
 
-## Developer 3 — Desktop/voice/overlay
+## Модуль Desktop — Desktop/voice/overlay
 
 Реализует ITranscriptSource и IOverlayEventSink. Хост создаёт EventBus, подписчика, pipeline и orchestrator. Subscribe принимает shared_ptr, возвращает числовой id; сохраняйте сильную ссылку на sink. Unsubscribe не дожидается уже начатого callback. При закрытии UI используйте weak/lifetime guard и drain очереди после остановки worker.
 

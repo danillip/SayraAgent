@@ -14,9 +14,9 @@
 namespace sayra {
 using Json = nlohmann::json;
 inline constexpr int contract_version = 1;
-// Construct a native path from UTF-8 without deprecated C++20 u8path.
+// Преобразует UTF-8 в путь файловой системы средствами C++20.
 std::filesystem::path path_from_utf8(std::string_view text);
-// Owns its copied value; no borrowed CRT environment pointer escapes.
+// Возвращает копию значения переменной окружения.
 std::optional<std::string> environment_variable(const std::string &name);
 std::string new_id();
 std::string utc_now();

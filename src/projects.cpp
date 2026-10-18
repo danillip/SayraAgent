@@ -155,7 +155,7 @@ std::string ProjectContextManager::read(const std::string &id, const std::string
         throw std::runtime_error("Файл превышает лимит размера");
     std::string text;
 #ifdef _WIN32
-    // Validate the opened handle, not only a path checked before opening (TOCTOU).
+    // Проверка открытого дескриптора закрывает гонку между проверкой пути и открытием файла.
     HANDLE raw = CreateFileW(file.c_str(), GENERIC_READ, FILE_SHARE_READ, nullptr, OPEN_EXISTING,
                              FILE_FLAG_OPEN_REPARSE_POINT, nullptr);
     if (raw == INVALID_HANDLE_VALUE)

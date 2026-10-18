@@ -65,7 +65,7 @@ void require_http(const HttpResult &r) {
             text += ": превышен лимит API";
         else if (r.status >= 500)
             text += ": сервер провайдера недоступен";
-        // Never echo server bodies which might contain credentials or private input.
+        // Тело ошибки может содержать ключи или входные данные и не включается в диагностику.
         throw ProviderError(text, r.status, r.status == 429 || r.status >= 500);
     }
 }
@@ -124,7 +124,7 @@ std::vector<ModelInfo> OllamaProvider::discover(std::stop_token stop) {
         m.embedding = cap(caps, "embedding");
         m.chat = cap(caps, "completion");
         m.tools = cap(caps, "tools");
-        // Explicit identity is a conservative fallback for older servers without capabilities.
+        // Совместимость с версиями Ollama без поля capabilities.
         if (lower_utf8(m.name).starts_with("bge-m3:")) {
             m.embedding = true;
             m.chat = false;
@@ -221,7 +221,7 @@ std::vector<ModelInfo> OpenAICompatibleProvider::discover(std::stop_token stop) 
         m.name = item.at("id").get<std::string>();
         m.provider = id();
         m.available = true;
-        // /models does not specify chat/embedding/tool capabilities; configuration must declare them.
+        // Тип модели и поддержка tools задаются профилем: /models этих сведений не предоставляет.
         out.push_back(std::move(m));
     }
     return out;
@@ -323,7 +323,7 @@ GenerationResult OpenAICompatibleProvider::generate(const GenerationRequest &req
         } catch (const ProviderError &e) {
             if (e.cancelled || !e.retryable || emitted || attempt >= config_.retries)
                 throw;
-            // Bounded, cancellable backoff; never retry after visible output.
+            // Повторы ограничены и отменяемы; после передачи текста повтор не выполняется.
             for (int i = 0; i < (attempt + 1) * 10; ++i) {
                 check_cancelled(stop);
                 std::this_thread::sleep_for(std::chrono::milliseconds(100));

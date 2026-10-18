@@ -17,7 +17,7 @@ class DiagnosticsService {
     explicit DiagnosticsService(ModelRegistry &r) : registry_(r) {}
     std::string report() const;
 };
-// Calls are blocking on a worker thread supplied by the host; one in-flight request per instance.
+// Синхронный вызов из рабочего потока. Один активный запрос на экземпляр.
 class SayraOrchestrator {
     Configuration config_;
     ModelRegistry &models_;

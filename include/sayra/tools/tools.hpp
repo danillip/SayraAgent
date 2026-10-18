@@ -21,7 +21,7 @@ struct ToolExecutionResult {
 };
 struct PermissionPolicy {
     bool project_read = true;
-    // Stage 1 deliberately denies dangerous tools. A future UI can implement confirmation.
+    // В текущей версии разрешены только инструменты чтения и диагностики.
     std::function<bool(const ToolDescriptor &, const ToolCall &)> confirm;
     bool permits(const ToolDescriptor &, const ToolContext &) const;
 };

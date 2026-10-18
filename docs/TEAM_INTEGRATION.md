@@ -1,10 +1,10 @@
 # Разделение работы команды
 
-Developer 1 владеет src провайдерами, transport, routing, projects, tools, memory, orchestrator и публичными core/model types. Изменения контрактов сначала согласуются со всеми.
+Модуль Core владеет src провайдерами, transport, routing, projects, tools, memory, orchestrator и публичными core/model types. Изменения контрактов сначала согласуются со всеми.
 
-Developer 2 создаёт отдельную цель sayra-knowledge в своём каталоге. Реализует IKnowledgeRetriever/IResearchService, использует IEmbeddingProvider. Не изменяет HTTP внутри Core и не пересылает приватные данные без флагов. Qdrant/Neo4j/Web Research отсутствуют намеренно. Подключение — shared_ptr в composition root.
+Модуль Knowledge создаёт отдельную цель sayra-knowledge в своём каталоге. Реализует IKnowledgeRetriever/IResearchService, использует IEmbeddingProvider. Не изменяет HTTP внутри Core и не пересылает приватные данные без флагов. Qdrant/Neo4j/Web Research отсутствуют намеренно. Подключение — shared_ptr в composition root.
 
-Developer 3 создаёт sayra-desktop отдельно, зависит только от sayra-core и согласованных integration/events типов. Audio/STT/Qt UI принадлежат Desktop. События копируются в очередь GUI; методы Qt из рабочего callback не вызываются. Передаёт TranscriptSegment через pipeline, запросы — через run на своём scheduler. Не разбирает NDJSON/SSE.
+Модуль Desktop создаёт sayra-desktop отдельно, зависит только от sayra-core и согласованных integration/events типов. Audio/STT/Qt UI принадлежат Desktop. События копируются в очередь GUI; методы Qt из рабочего callback не вызываются. Передаёт TranscriptSegment через pipeline, запросы — через run на своём scheduler. Не разбирает NDJSON/SSE.
 
 Контракты version 1 в include/sayra/integration, events/events.hpp и core/types.hpp. Не включайте заголовки curl/sqlite в модуль Desktop/Knowledge. Публичный Json применяется только для схем/аргументов инструментов и конфигурации; текст и источники интеграции типизированы.
 

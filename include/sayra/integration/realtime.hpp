@@ -24,7 +24,7 @@ class ITranscriptSource {
     virtual void start(std::function<void(TranscriptSegment)>) = 0;
     virtual void stop() = 0; // must return after all callbacks complete
 };
-// Lightweight ingress. Host schedules returned requests on a worker, cancelling obsolete ones.
+// Приём транскрипции без сетевых вызовов. Планирование и отмена запросов — на стороне приложения.
 class RealtimeAssistancePipeline {
     mutable std::mutex mutex_;
     RealtimeSession session_;

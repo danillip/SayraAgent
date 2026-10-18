@@ -74,7 +74,7 @@ AgentResponse SayraOrchestrator::run(AgentRequest req, Conversation &conversatio
         if (intent.needs_web && !can_research) {
             last_ = {};
             last_.reason = "No model called: verified web research required";
-            // Do not ask an ungrounded model to invent current facts or links.
+            // Без Research актуальные факты и ссылки не генерируются.
             AgentResponse response;
             response.request_id = req.request_id;
             response.project_id = req.project_id;
@@ -174,7 +174,7 @@ AgentResponse SayraOrchestrator::run(AgentRequest req, Conversation &conversatio
             emit(EventType::ToolCompleted, call.name + (latest_tool_success ? ": OK" : ": error"));
             return content;
         };
-        // Deterministic fallback reads explicit relative filenames even without native tool calling.
+        // Явно указанный файл читается и без поддержки tool calling у модели.
         if (intent.has(TaskType::ProjectAnalysis) && !req.project_id.empty()) {
             const auto files = projects_.files(req.project_id, stop);
             bool found = false;
@@ -204,7 +204,7 @@ AgentResponse SayraOrchestrator::run(AgentRequest req, Conversation &conversatio
                                                 tool_result(call)});
             }
         }
-        // Never include project content or history in a cloud request without the relevant authorization.
+        // Разрешения на передачу проекта и истории проверяются до облачного запроса.
         if (response.provider == "cloud" && (!config_.cloud_enabled || !req.allow_cloud ||
                                              ((!req.project_id.empty() || !conversation.project_id.empty()) &&
                                               (!config_.project_cloud || !req.allow_project_cloud)) ||
@@ -230,7 +230,7 @@ AgentResponse SayraOrchestrator::run(AgentRequest req, Conversation &conversatio
             if (selected.context)
                 g.options.context =
                     static_cast<int>((std::min)(selected.context, static_cast<size_t>(g.options.context)));
-            // Conservative UTF-8 byte budget; context tokens can be smaller than bytes for unusual inputs.
+            // Оценка контекста по UTF-8-байтам с резервом на ответ; точный токенизатор не используется.
             size_t message_bytes = 0;
             for (const auto &m : g.messages)
                 message_bytes += m.content.size();
@@ -281,7 +281,7 @@ AgentResponse SayraOrchestrator::run(AgentRequest req, Conversation &conversatio
                 completed = true;
                 break;
             }
-            // Persist only final dialogue; temporary tool exchanges remain in this request.
+            // В истории сохраняется диалог; промежуточные вызовы инструментов относятся к текущему запросу.
             response.text += result.text;
             messages.push_back({"assistant", result.text, "", "", result.tool_calls});
             for (const auto &call : result.tool_calls) {
